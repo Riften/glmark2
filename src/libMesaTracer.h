@@ -23,6 +23,12 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 #define CGO_START 0
 #define CGO_END 1
+#define GLM2_DRAW_BEGIN 2
+#define GLM2_DRAW_END 3
+#define GLM2_STEP_BEGIN 4
+#define GLM2_STEP_END 5
+#define GLM2_UPDATE_BEGIN 6
+#define GLM2_UPDATE_END 7
 
 #line 1 "cgo-generated-wrapper"
 
