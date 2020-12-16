@@ -222,6 +222,7 @@ main(int argc, char *argv[])
         do_validation(canvas);
     else
         do_benchmark(canvas);
+    cgoAddTrace(CGO_END);
     cgoStopAndWait();
     return 0;
 }
