@@ -73,6 +73,7 @@ common_deps = [
     libjpeg_dep,
     libpng_dep,
     libmatrix_headers_dep,
+    libMesaTracer,
 ]
     
 if need_drm
