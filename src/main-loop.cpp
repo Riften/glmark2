@@ -27,6 +27,8 @@
 #include <string>
 #include <sstream>
 
+#include "libMesaTracer.h"
+
 /************
  * MainLoop *
  ************/
@@ -129,9 +131,13 @@ void
 MainLoop::draw()
 {
     canvas_.clear();
-
+    cgoAddTrace(GLM2_DRAW_BEGIN);
     scene_->draw();
+    cgoAddTrace(GLM2_DRAW_END);
+
+    cgoAddTrace(GLM2_UPDATE_BEGIN);
     scene_->update();
+    cgoAddTrace(GLM2_UPDATE_END);
 
     canvas_.update();
 }
