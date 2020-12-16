@@ -26,7 +26,6 @@ m_dep = cpp.find_library('m', required : false)
 dl_dep = cpp.find_library('dl')
 libjpeg_dep = dependency('libjpeg')
 libpng_dep = dependency('libpng16')
-libMesaTracer = dependency('libMesaTracer')
 libMesaTracer = cpp.find_library('MesaTracer',
                dirs : ['/usr/local/lib'])
 
