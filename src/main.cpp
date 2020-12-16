@@ -34,7 +34,7 @@
 
 #include "canvas-generic.h"
 
-#include "CGO/libMesaTracer.h"
+#include "libMesaTracer.h"
 
 #if GLMARK2_USE_X11
 #include "native-state-x11.h"
