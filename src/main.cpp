@@ -34,6 +34,8 @@
 
 #include "canvas-generic.h"
 
+#include "CGO/libMesaTracer.h"
+
 #if GLMARK2_USE_X11
 #include "native-state-x11.h"
 #elif GLMARK2_USE_DRM
@@ -144,6 +146,7 @@ do_validation(Canvas &canvas)
 int
 main(int argc, char *argv[])
 {
+    cgoAddTrace(CGO_START);
     if (!Options::parse_args(argc, argv))
         return 1;
 
@@ -219,6 +222,6 @@ main(int argc, char *argv[])
         do_validation(canvas);
     else
         do_benchmark(canvas);
-
+    cgoStopAndWait();
     return 0;
 }
