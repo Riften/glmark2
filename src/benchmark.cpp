@@ -24,6 +24,8 @@
 #include "log.h"
 #include "util.h"
 
+#include "libMesaTracer.h"
+
 using std::string;
 using std::vector;
 using std::map;
@@ -104,12 +106,13 @@ Benchmark::Benchmark(const string &s) :
 Scene &
 Benchmark::setup_scene()
 {
+    cgoAddTrace(GLM2_STEP_BEGIN);
     scene_.reset_options();
     load_options();
 
     scene_.load();
     scene_.setup();
-
+    cgoAddTrace(GLM2_STEP_END);
     return scene_;
 }
 
