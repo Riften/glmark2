@@ -222,7 +222,7 @@ SceneBuild::draw()
     LibMatrix::Stack4 model_view;
 
     // Load the ModelViewProjectionMatrix uniform in the shader
-    cgoAddTrace(GLM2_LOAD_PROJECTION_BEGIN);
+    cgoAddTrace(GLM2_BUILD_LOAD_PROJECTION_BEGIN);
     LibMatrix::mat4 model_view_proj(perspective_);
     model_view.translate(-centerVec_.x(), -centerVec_.y(), -(centerVec_.z() + 2.0 + radius_));
     model_view.rotate(rotation_, 0.0f, 1.0f, 0.0f);
@@ -233,15 +233,15 @@ SceneBuild::draw()
     model_view_proj *= model_view.getCurrent();
 
     program_["ModelViewProjectionMatrix"] = model_view_proj;
-    cgoAddTrace(GLM2_LOAD_PROJECTION_END);
+    cgoAddTrace(GLM2_BUILD_LOAD_PROJECTION_END);
 
     // Load the NormalMatrix uniform in the shader. The NormalMatrix is the
     // inverse transpose of the model view matrix.
-    cgoAddTrace(GLM2_LOAD_NORMAL_BEGIN);
+    cgoAddTrace(GLM2_BUILD_LOAD_NORMAL_BEGIN);
     LibMatrix::mat4 normal_matrix(model_view.getCurrent());
     normal_matrix.inverse().transpose();
     program_["NormalMatrix"] = normal_matrix;
-    cgoAddTrace(GLM2_LOAD_NORMAL_END);
+    cgoAddTrace(GLM2_BUILD_LOAD_NORMAL_END);
 
     if (useVbo_) {
         cgoAddTrace(GLM2_BUILD_RENDER_VBO_BEGIN);
