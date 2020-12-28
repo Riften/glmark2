@@ -23,6 +23,7 @@
 #include "gl-state-glx.h"
 #include "log.h"
 #include "options.h"
+#include "libMesaTracer.h"
 
 #include <climits>
 
@@ -125,7 +126,9 @@ GLStateGLX::reset()
 void
 GLStateGLX::swap()
 {
+    cgoAddTrace(GLM2_GLX_SWAP_BEGIN);
     glXSwapBuffers(xdpy_, xwin_);
+    cgoAddTrace(GLM2_GLX_SWAP_END);
 }
 
 bool

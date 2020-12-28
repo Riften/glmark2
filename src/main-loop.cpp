@@ -139,7 +139,9 @@ MainLoop::draw()
     scene_->update();
     cgoAddTrace(GLM2_UPDATE_END);
 
+    cgoAddTrace(GLM2_CANVAS_UPDATE_BEGIN);
     canvas_.update();
+    cgoAddTrace(GLM2_CANVAS_UPDATE_END);
 }
 
 void
